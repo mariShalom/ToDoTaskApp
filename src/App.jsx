@@ -8,7 +8,7 @@ const App = () => {
 
   useEffect(() => {
     const initialTodos = [
-      { id: 1, text: '30 minutes Jogging', completed: false },
+      { id: 1, text: '20 minutes Jogging', completed: false },
       { id: 2, text: 'Wash Dishes', completed: false }
     ];
     setTodos(initialTodos);
