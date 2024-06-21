@@ -61,9 +61,15 @@ const App = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <h1>My To Do List</h1>
       <input type="text" value={input} onChange={handleChanges} />
       <button onClick={addTodo}>{editMode !== null ? 'Save' : 'Add Tasks'}</button>
+=======
+      <h1>My To DO Task Aplication</h1>
+      <input type="text" value={input} onChange={handleChange} />
+      <button onClick={addTodo}>{editMode !== null ? 'Save' : 'Add Task'}</button>
+>>>>>>> 6e5844a1d0408302f6f9b6f0148afd9b20e5c1a3
       <ul>
         {todos.map(todo => (
           <li
