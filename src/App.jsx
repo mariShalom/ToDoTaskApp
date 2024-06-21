@@ -61,7 +61,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>My To-Do List</h1>
+      <h1>My To DO Task Aplication</h1>
       <input type="text" value={input} onChange={handleChange} />
       <button onClick={addTodo}>{editMode !== null ? 'Save' : 'Add Task'}</button>
       <ul>
