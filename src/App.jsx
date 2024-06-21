@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState('');
+  const [todos, setTodo] = useState([]);
+  const [input, setInputs] = useState('');
   const [editMode, setEditMode] = useState(null);
 
   useEffect(() => {
@@ -11,35 +11,35 @@ const App = () => {
       { id: 1, text: '60 minutes Jogging', completed: false },
       { id: 2, text: 'Wash Dishes', completed: false }
     ];
-    setTodos(initialTodos);
+    setTodo(initialTodos);
   }, []);
 
-  const handleChange = (e) => {
-    setInput(e.target.value);
+  const handleChanges = (e) => {
+    setInputs(e.target.value);
   };
 
   const addTodo = () => {
     if (input.trim() !== '') {
       if (editMode !== null) {
-        // Editing existing todo
-        setTodos(prevTodos =>
+        
+        setTodo(prevTodos =>
           prevTodos.map(todo =>
             todo.id === editMode ? { ...todo, text: input } : todo
           )
         );
         setEditMode(null);
       } else {
-        // Adding new todo
-        setTodos(prevTodos => [
+       
+        setTodo(prevTodos => [
           ...prevTodos,
           { id: todos.length + 1, text: input, completed: false }
         ]);
       }
-      setInput('');
+      setInputs('');
     }
   };
 
-  const toggleComplete = (id) => {
+  const toggleCompletes = (id) => {
     setTodos(prevTodos =>
       prevTodos.map(todo =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -47,33 +47,33 @@ const App = () => {
     );
   };
 
-  const editTodo = (id) => {
+  const editTodos = (id) => {
     const todoToEdit = todos.find(todo => todo.id === id);
-    setInput(todoToEdit.text);
+    setInputs(todoToEdit.text);
     setEditMode(id);
   };
 
-  const deleteTodo = (id) => {
-    setTodos(prevTodos =>
-      prevTodos.filter(todo => todo.id !== id)
+  const deleteTodos = (id) => {
+    setTodo(prevTodo =>
+      prevTodo.filter(todo => todo.id !== id)
     );
   };
 
   return (
     <div>
-      <h1>My To-Do List</h1>
-      <input type="text" value={input} onChange={handleChange} />
-      <button onClick={addTodo}>{editMode !== null ? 'Save' : 'Add Task'}</button>
+      <h1>My To Do List</h1>
+      <input type="text" value={input} onChange={handleChanges} />
+      <button onClick={addTodo}>{editMode !== null ? 'Save' : 'Add Tasks'}</button>
       <ul>
         {todos.map(todo => (
           <li
             key={todo.id}
             className={todo.completed ? 'completed' : ''}
-            onClick={() => toggleComplete(todo.id)}
+            onClick={() => toggleCompletes(todo.id)}
           >
             {todo.text}
-            <button className="edit" onClick={() => editTodo(todo.id)}>Edit</button>
-            <button className="delete" onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <button className="edit" onClick={() => editTodos(todo.id)}>Edit</button>
+            <button className="delete" onClick={() => deleteTodos(todo.id)}>Delete</button>
           </li>
         ))}
       </ul>
