@@ -21,7 +21,7 @@ const App = () => {
   const addTodo = () => {
     if (input.trim() !== '') {
       if (editMode !== null) {
-       
+        // Editing existing todo
         setTodos(prevTodos =>
           prevTodos.map(todo =>
             todo.id === editMode ? { ...todo, text: input } : todo
@@ -29,7 +29,7 @@ const App = () => {
         );
         setEditMode(null);
       } else {
-        
+        // Adding new todo
         setTodos(prevTodos => [
           ...prevTodos,
           { id: todos.length + 1, text: input, completed: false }
