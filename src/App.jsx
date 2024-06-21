@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'; 
+import './App.css';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
-  const [editMode, setEditMode] = useState(null); 
+  const [editMode, setEditMode] = useState(null);
 
   useEffect(() => {
     const initialTodos = [
@@ -12,7 +12,7 @@ const App = () => {
       { id: 2, text: 'Wash Dishes', completed: false }
     ];
     setTodos(initialTodos);
-  }, []); 
+  }, []);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -21,15 +21,15 @@ const App = () => {
   const addTodo = () => {
     if (input.trim() !== '') {
       if (editMode !== null) {
-        // Edit mode
+       
         setTodos(prevTodos =>
           prevTodos.map(todo =>
             todo.id === editMode ? { ...todo, text: input } : todo
           )
         );
-        setEditMode(null); 
+        setEditMode(null);
       } else {
-        // Add mode
+        
         setTodos(prevTodos => [
           ...prevTodos,
           { id: todos.length + 1, text: input, completed: false }
