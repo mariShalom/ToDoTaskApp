@@ -40,7 +40,7 @@ const App = () => {
   };
 
   const toggleCompletes = (id) => {
-    setTodos(prevTodos =>
+    setTodo(prevTodos =>
       prevTodos.map(todo =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
