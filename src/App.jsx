@@ -55,8 +55,8 @@ const App = () => {
 
   const deleteTodos = (id) => {
     setTodo(prevTodo =>
-      prevTodo.filter(todo => todo.id !== id)
-    );
+        prevTodo.filter(todo => todo.id !== id)
+      );
   };
 
   return (
